@@ -1,0 +1,24 @@
+server:
+  port: 8090
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER_IP:}:9092
+    consumer:
+      group-id: bh
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+
+cloud:
+  aws:
+    s3:
+      bucket: ${AWS_S3_BUCKET:}
+    credentials:
+      access-key: ${AWS_ACCESS_KEY:}
+      secret-key: ${AWS_SECRET_KEY:}
+    region:
+      static: ${AWS_REGION:ap-northeast-2}
